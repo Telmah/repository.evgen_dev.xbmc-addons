@@ -66,7 +66,7 @@ class HttpData:
         else:
             return response.text if response.status_code == 200 else None
 
-    def get_movies(self, url, page, idname='dle-content', nocache=False, search="", itemclassname="shortstory"):
+    def get_movies(self, url, page, idname='dle-content', nocache=False, search="", itemclassname="shortstory line"):
         page = int(page)
 
         if(page > 0 and search == ''):
@@ -136,7 +136,7 @@ class HttpData:
                         'not_movie': not_movie,
                         'quality': self.format_quality(quality),
                         'year': information,
-                        'name': href.find('div', class_='name').get_text().strip(),
+                        'name': div.find('h3', class_='name').get_text().strip(),
                         'img': None if not movieposter else movieposter
                     })
         except:
